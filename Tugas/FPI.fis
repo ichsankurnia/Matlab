@@ -1,0 +1,40 @@
+[System]
+Name='FPI'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=4
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='e'
+Range=[-1 1]
+NumMFs=2
+MF1='Negative':'trimf',[-2 -1 1]
+MF2='Positive':'trimf',[-1 1 2]
+
+[Input2]
+Name='de'
+Range=[-1 1]
+NumMFs=2
+MF1='Negative':'trimf',[-2 -1 1]
+MF2='Positive':'trimf',[-1 1 2]
+
+[Output1]
+Name='du'
+Range=[-1 1]
+NumMFs=3
+MF1='Negative':'trimf',[-2 -1 0]
+MF2='Zero':'trimf',[-1 0 1]
+MF3='Positive':'trimf',[0 1 2]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 2 (1) : 1
+2 1, 2 (1) : 1
+2 2, 3 (1) : 1
